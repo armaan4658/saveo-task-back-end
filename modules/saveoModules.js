@@ -74,12 +74,17 @@ const getOrderDetails = async(req,res) => {
 
 const placeorder = async(req,res) => {
     try{
-        const data = req.body;
-        const order = new Order({
+        const csv = await CsvModel.find();
+        if(csv.length > 0) {
+            const data = req.body;
+            const order = new Order({
             order: data
-        })
-        await order.save();
-        res.send({"_id":order._id});
+            })
+            await order.save();
+            res.send({"_id":order._id});
+        }else{
+            res.send("CSV file not found");
+        }
     }catch(e){
         res.status(404).send(e);
     }
