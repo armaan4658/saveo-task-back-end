@@ -5,9 +5,11 @@
 2.To search a particular medicine:
     use url as "baseurl/searchMedicine/medicinename" here pass the medicine name you want to search in params
     if you don't pass any params you will get all the medicine names
+    
 3.To get a particular medicine details
     use url as "baseurl/getMedicineDetails/c_unique_id" here pass the csv document unique id as param
     if you don't enter any param you will recieve a 404 error
+    
 4.To place orders:
     use url as "baseurl/placeorder" and provide the input as 
     [
