@@ -61,6 +61,17 @@ const getMedicineDetails = async(req,res) => {
     }
 }
 
+const getOrderDetails = async(req,res) => {
+    try{
+        const {id} = req.params;
+        // will return details of one particular order which matches it's id
+        const data = await Order.find({_id:id});
+        data ? res.send(data) : res.send("Incorrect id");
+    }catch(e){
+        res.status(404).send(e);
+    }
+}
+
 const placeorder = async(req,res) => {
     try{
         const data = req.body;
@@ -122,5 +133,5 @@ const csvToJson = (results,csv) => {
 module.exports = {
     uploadCSV,searchMedicine,
     getMedicineDetails,placeorder,
-    sendAll,getorder
+    sendAll,getorder,getOrderDetails
 }

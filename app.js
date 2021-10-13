@@ -6,7 +6,7 @@ const dotenv = require('dotenv/config');
 const {
     uploadCSV,searchMedicine,
     getMedicineDetails,placeorder,
-    sendAll,getorder
+    sendAll,getorder,getOrderDetails
 } = require('./modules/saveoModules.js');
 const app = express();
 
@@ -32,6 +32,8 @@ app.get('/getMedicineDetails/:c_unique_id',getMedicineDetails);
 app.post('/placeorder',placeorder);
 
 app.get('/getorder',getorder);
+
+app.get('/getorder/:id',getOrderDetails);
 
 const port = process.env.PORT || 5000 ;
 app.listen(port,()=>console.log(`Listening in port : ${port}`));
