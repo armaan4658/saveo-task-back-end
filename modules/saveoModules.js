@@ -3,7 +3,8 @@ const Order = require('../models/placeOrder.js');
 const uploadCSV = async(req,res)=>{
     try{
         // checking if file is of type csv
-        if(req.file.mimetype === "text/csv"){
+        let type = req.file.originalname.split('.');
+        if(type[1] === "csv"){
             let results = [];
             var csv=req.file.buffer.toString('utf8');
             // converting csv file to json
