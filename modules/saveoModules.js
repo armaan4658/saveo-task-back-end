@@ -34,7 +34,7 @@ const searchMedicine = async(req,res) => {
         const {ser} = req.params;
         // using regex to return everything that matches the searched keyword
         const product = await CsvModel.find({ c_name: new RegExp(ser,"i") }).select('c_name');
-        product.length!==0?res.send(product):res.status(402).send("product doesn't exist")
+        res.send(product);
     }catch(e){
         res.status(404).send(e);
     }
